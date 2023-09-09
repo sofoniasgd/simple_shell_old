@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Simple Shell</title>
-</head>
-
-<body>
 
     <h1>Simple Shell</h1>
 
@@ -143,5 +135,4 @@ Hello, World!
 
     <p>Copyright &copy; 2023 ALX, All rights reserved.</p>
 
-</body
 
