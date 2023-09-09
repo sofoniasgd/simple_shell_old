@@ -1,12 +1,9 @@
 <h1>Simple Shell</h1>
 <img src="https://www.alx.school/images/logo.png" alt="ALX Logo">
 <h2>Introduction</h2>
-
-    <p>Welcome to the Simple Shell project! This project is a part of the ALX Software Engineering program and is designed to help you build your own Unix command-line interpreter. In this README, we will provide an overview of the project, its objectives, requirements, and instructions on how to use and test your shell.</p>
-
-    <h2>Table of Contents</h2>
-
-    <ul>
+<p>Welcome to the Simple Shell project! This project is a part of the ALX Software Engineering program and is designed to help you build your own Unix command-line interpreter. In this README, we will provide an overview of the project, its objectives, requirements, and instructions on how to use and test your shell.</p>
+<h2>Table of Contents</h2>
+<ul>
         <li><a href="#project-overview">Project Overview</a></li>
         <li><a href="#learning-objectives">Learning Objectives</a></li>
         <li><a href="#requirements">Requirements</a></li>
@@ -18,11 +15,11 @@
         <li><a href="#license">License</a></li>
     </ul>
 
-    <h2 id="project-overview">Project Overview</h2>
+<h2 id="project-overview">Project Overview</h2>
 
-    <p>The Simple Shell project is designed to challenge your understanding of various programming and Unix concepts, including but not limited to:</p>
+<p>The Simple Shell project is designed to challenge your understanding of various programming and Unix concepts, including but not limited to:</p>
 
-    <ul>
+<ul>
         <li>Basics of programming</li>
         <li>Basics of C</li>
         <li>Basics of thinking like an engineer</li>
@@ -35,13 +32,13 @@
         <li>Input and output handling</li>
     </ul>
 
-    <p>This project will involve creating a simple UNIX command interpreter that can execute basic shell commands. You'll be working in pairs and are expected to follow certain guidelines and rules to ensure a fair and productive learning experience.</p>
+<p>This project will involve creating a simple UNIX command interpreter that can execute basic shell commands. You'll be working in pairs and are expected to follow certain guidelines and rules to ensure a fair and productive learning experience.</p>
 
-    <h2 id="learning-objectives">Learning Objectives</h2>
+<h2 id="learning-objectives">Learning Objectives</h2>
 
-    <p>By the end of this project, you should be able to explain and demonstrate the following concepts without the help of external resources:</p>
+<p>By the end of this project, you should be able to explain and demonstrate the following concepts without the help of external resources:</p>
 
-    <ul>
+<ul>
         <li>The history and key contributors to Unix and the Unix shell.</li>
         <li>How a shell works internally, including the concepts of processes, PID, and PPID.</li>
         <li>Manipulation of the environment variables of a process.</li>
@@ -53,11 +50,11 @@
         <li>Understanding the concept of EOF (end-of-file).</li>
     </ul>
 
-    <h2 id="requirements">Requirements</h2>
+<h2 id="requirements">Requirements</h2>
 
-    <h3>General</h3>
+<h3>General</h3>
 
-    <ul>
+<ul>
         <li>You may use editors like <code>vi</code>, <code>vim</code>, or <code>emacs</code>.</li>
         <li>All your files must compile on Ubuntu 20.04 LTS using <code>gcc</code> with the following options: <code>-Wall -Werror -Wextra -pedantic -std=gnu89</code>.</li>
         <li>Each of your code files should end with a new line.</li>
@@ -70,16 +67,12 @@
         <li>Write a README that describes your project.</li>
     </ul>
 
-    <h2 id="usage">Usage</h2>
+<h2 id="usage">Usage</h2>
 
-    <h3>Interactive Mode</h3>
-
+ <h3>Interactive Mode</h3>
     <p>To use your shell in interactive mode, run the following command:</p>
-
     <pre><code>./shell</code></pre>
-
     <p>Your shell should display a prompt, waiting for user input. You can then enter shell commands, and your shell should execute them.</p>
-
     <pre><code>$ ./shell
 ($) ls
 file1.txt file2.txt
@@ -87,49 +80,32 @@ file1.txt file2.txt
 Hello, World!
 ($) exit
 </code></pre>
-
     <h3>Non-Interactive Mode</h3>
-
     <p>Your shell should also support non-interactive mode, where commands are provided via a file. To use non-interactive mode, run the following command:</p>
-
     <pre><code>$ echo "ls\necho 'Hello, World!'" | ./shell</code></pre>
-
     <p>Your shell should execute the commands from the file and provide the output:</p>
-
     <pre><code>file1.txt file2.txt
 Hello, World!
 </code></pre>
-
     <h2 id="testing">Testing</h2>
-
     <p>You should thoroughly test your shell to ensure it behaves correctly. Test it with various shell commands, including commands with arguments and options. Also, make sure to test edge cases and error handling.</p>
-
     <h2 id="commands">Commands</h2>
-
     <p>Your shell should support the following commands:</p>
-
     <ul>
         <li><code>ls</code>: List files and directories</li>
         <li><code>echo</code>: Print text</li>
         <li><code>exit</code>: Exit the shell</li>
         <!-- Add more commands here -->
     </ul>
-
     <h2 id="known-issues">Known Issues</h2>
-
     <p>Document any known issues or limitations of your shell here. Be transparent about any challenges or features that are not yet implemented.</p>
-
     <h2 id="contributors">Contributors</h2>
-
     <p>This project was developed by the following contributors:</p>
-
     <ul>
         <li>Biniyam BEYENE</li>
         <li>Sofonias Dubale</li>
     </ul>
-
     <h2 id="license">License</h2>
-
     <p>Copyright &copy; 2023 ALX, All rights reserved.</p>
 
 
