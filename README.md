@@ -1,9 +1,6 @@
-
-    <h1>Simple Shell</h1>
-
-    <img src="https://www.alx.school/images/logo.png" alt="ALX Logo">
-
-    <h2>Introduction</h2>
+<h1>Simple Shell</h1>
+<img src="https://www.alx.school/images/logo.png" alt="ALX Logo">
+<h2>Introduction</h2>
 
     <p>Welcome to the Simple Shell project! This project is a part of the ALX Software Engineering program and is designed to help you build your own Unix command-line interpreter. In this README, we will provide an overview of the project, its objectives, requirements, and instructions on how to use and test your shell.</p>
 
