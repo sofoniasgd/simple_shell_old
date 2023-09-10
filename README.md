@@ -82,4 +82,3 @@ This project was developed by the following contributors:
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-
