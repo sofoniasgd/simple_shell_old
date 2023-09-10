@@ -30,7 +30,7 @@
         <p>To get started with the Simple Shell, follow these steps:</p>
         <ol>
             <li>Clone the project repository to your local machine:</li>
-            <pre><code>git clone https://github.com/your-username/simple-shell.git</code></pre>
+            <pre><code>git clone https://github.com/bini34/simple_shell.git</code></pre>
             <li>Compile the shell using GCC:</li>
             <pre><code>gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh</code></pre>
             <li>Run the shell:</li>
