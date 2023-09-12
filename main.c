@@ -1,35 +1,53 @@
 #include "shell.h"
 /**
+ * main - Entry point for the shell program.
+ * @argc: The number of command-line arguments.
+ * @argv: An array of strings containing the command-line arguments.
+ * @envp: An array of strings containing environment variables.
  *
+ * Return: Always returns 0.
  */
-
-int main(int ac, char **av)
+int main(int argc, char *argv[], char *envp[])
 {
 	size_t n = 0;
 	ssize_t nchars_read;
-	char *lineptr, *lineptr_copy = NULL;
+	char *lineptr = NULL, **av = NULL;
+	int num_tokens = 0, i, status;
+	pid_t pid;
 
-	(void)ac; (void)av;
+	(void)argc;
 	while (1)
 	{
 		write(STDOUT_FILENO, "#cisfun$ ", 9);
 		nchars_read = getline(&lineptr, &n, stdin);
-
 		if (nchars_read == -1)
-            return (-1);
-		lineptr_copy = malloc(sizeof(char) * nchars_read);
-		if (lineptr_copy== NULL)
-			return (-1);
-		strcpy(lineptr_copy, lineptr);
-		token = strtok(lineptr, delim);
-		while (token != NULL)
 		{
-			num_tokens++;
-			token = strtok(NULL, delim);
-        }
-		num_tokens++;
+			write(STDOUT_FILENO, "\n", 2);
+			free(lineptr);
+			return (-1);
+		}
+		parseInput(lineptr, &av, &nchars_read, &num_tokens);
+		pid = fork();
+
+		if (pid == -1)
+			exit(EXIT_FAILURE);
+		else if (pid == 0)
+		{
+			execmd(av, envp);
+			perror(argv[0]);
+			exit(EXIT_FAILURE);
+		}
+		else
+		{
+			if (wait(&status) == -1)
+				exit(EXIT_FAILURE);
+		}
+		for (i = 0; i < num_tokens; i++)
+		{
+			free(av[i]);
+		}
+		free(av);
 	}
 	free(lineptr);
 	return (0);
-	
 }
