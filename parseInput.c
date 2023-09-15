@@ -11,7 +11,7 @@ void parseInput(char *lineptr, char ***av, ssize_t *nchars, int *num_tokens)
 	char *lineptr_copy = NULL, *token;
 	const char *delim = " \n";
 	int i;
-
+	/* copy command input into new location(lineptr_copy)*/
 	*num_tokens = 0;
 	lineptr_copy = malloc(sizeof(char) * (*nchars));
 	if (lineptr_copy == NULL)
