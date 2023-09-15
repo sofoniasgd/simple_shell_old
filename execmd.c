@@ -25,10 +25,16 @@ void execmd(char **av, char **envp)
 					strcat(full_path, command);
 					if (access(full_path, X_OK) == 0)
 					{
-						execve(full_path, av, envp);
+						if (execve(full_path, av, envp) == -1)
+						{
 						perror("execve");
 						free(full_path);
 						exit(EXIT_FAILURE);
+						}
+						else
+						{
+						exit(EXIT_SUCCESS);
+						}
 					}
 					free(full_path);
 				}
