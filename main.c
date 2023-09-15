@@ -107,7 +107,7 @@ int main(int argc, char *argv[], char *envp[])
 
 	while (1)
 	{
-		write(STDOUT_FILENO, "#cisfun$ ", 9);
+		write(STDOUT_FILENO, ":) ", 3);
 		nchars_read = getline(&lineptr, &n, stdin);
 		if (nchars_read == -1)
 		{
