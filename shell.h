@@ -12,6 +12,6 @@ void execmd(char **av, char **envp);
 void parseInput(char *lineptr, char ***av, ssize_t *nchars, int *num_tokens);
 void execute_command(char *argv, char **av, char *envp[]);
 int append_path(char **av);
-void print_environment(char *envp[];
+void print_environment(char *envp[]);
 
 #endif

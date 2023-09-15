@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * print_environment - Print the current environment variables.
  * @envp: An array of strings containing environment variables.
