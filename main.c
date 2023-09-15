@@ -118,6 +118,7 @@ int main(int argc, char *argv[], char *envp[])
 		parseInput(lineptr, &av, &nchars_read, &num_tokens);
 		if (strcmp(av[0], "exit") == 0)
 		{
+			free(av[0]);
 			free(av);
 			free(lineptr);
 			return (-1);
