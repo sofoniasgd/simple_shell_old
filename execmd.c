@@ -6,42 +6,11 @@
  */
 void execmd(char **av, char **envp)
 {
-	char *command = NULL, *path = getenv("PATH"), *token, *path_copy, *full_path;
+	char *command = NULL;
 
 	if (av && av[0])
 	{
 		command = av[0];
-		if (strchr(command, '/') == NULL)
-		{
-			path_copy = strdup(path);
-			token = strtok(path_copy, ":");
-			while (token != NULL)
-			{
-				full_path = malloc(strlen(token) + strlen(command) + 2);
-				if (full_path != NULL)
-				{
-					strcpy(full_path, token);
-					strcat(full_path, "/");
-					strcat(full_path, command);
-					if (access(full_path, X_OK) == 0)
-					{
-						if (execve(full_path, av, envp) == -1)
-						{
-						perror("execve");
-						free(full_path);
-						exit(EXIT_FAILURE);
-						}
-						else
-						{
-						exit(EXIT_SUCCESS);
-						}
-					}
-					free(full_path);
-				}
-				token = strtok(NULL, ":");
-			}
-			free(path_copy);
-		}
 		execve(command, av, envp);
 	}
 	else
