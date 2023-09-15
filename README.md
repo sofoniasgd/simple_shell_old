@@ -12,7 +12,7 @@ A Unix command-line interpreter
   - [Non-Interactive Mode](#non-interactive-mode)
 - [Features](#features)
 - [Contributors](#contributors)
-- [License](#license)
+- [CopyRight](#CopyRight)
 
 ## Overview
 
@@ -78,7 +78,9 @@ This project was developed by the following contributors:
 - Biniyam BEYENE
 - Sofonias Dubale
 
-## License
+## CopyRight
+
+Copyright (C) 2023  by [**Biniyam Ambachew**](https://github.com/bini34) and [**Sofonias Dubale**](https://github.com/sofoniasgd)
 
 
 
