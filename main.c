@@ -107,7 +107,7 @@ int main(int argc, char *argv[], char *envp[])
 
 	while (1)
 	{
-		write(STDOUT_FILENO, ":) ", 3);
+		write(STDOUT_FILENO, "$ ", 2);
 		nchars_read = getline(&lineptr, &n, stdin);
 		if (nchars_read == -1)
 		{
@@ -123,6 +123,8 @@ int main(int argc, char *argv[], char *envp[])
 			free(lineptr);
 			return (-1);
 		}
+		else if (num_tokens == 1 && strcmp(av[0], "env") == 0)
+			print_environment(envp);
 		execute_command(argv[0], av, envp);
 		for (i = 0; i < num_tokens; i++)
 		{
