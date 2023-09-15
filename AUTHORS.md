@@ -1,4 +1,4 @@
 # This file lists all contributors to this repository
 
-Biniyam Ambachew <biniyamambachew@gmail.com>
-Sofonias Dubale <zephaniahsofa@gmail.com>
+<p>Biniyam Ambachew <biniyamambachew@gmail.com></p>
+<p>Sofonias Dubale <zephaniahsofa@gmail.com></p>
