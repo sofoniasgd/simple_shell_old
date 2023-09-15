@@ -7,7 +7,7 @@
 void execmd(char **av, char **envp)
 {
 	char *command = NULL;
-
+/* execute command, av & av[0] check might be redundant */
 	if (av && av[0])
 	{
 		command = av[0];
