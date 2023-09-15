@@ -80,7 +80,8 @@ This project was developed by the following contributors:
 
 ## CopyRight
 
-Copyright (C) 2023  by [**Biniyam Ambachew**](https://github.com/bini34) and [**Sofonias Dubale**](https://github.com/sofoniasgd)
+Copyright (C) 2023  by [**Biniyam Ambachew**](https://github.com/bini34) and [**Sofonias Dubale**](https://github.com/sofoniasgd)<br>
+All rights reserved
 
 
 
