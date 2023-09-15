@@ -24,8 +24,9 @@ int main(int argc, char *argv[], char *envp[])
 		{
 			write(STDOUT_FILENO, "\n", 2);
 			free(lineptr);
-			return (-1);
-		}
+			return (-1);	}
+		if (lineptr[nchars_read - 1] == '\n')
+			lineptr[nchars_read - 1] = '\0';
 		parseInput(lineptr, &av, &nchars_read, &num_tokens);
 		pid = fork();
 
@@ -35,19 +36,15 @@ int main(int argc, char *argv[], char *envp[])
 		{
 			execmd(av, envp);
 			perror(argv[0]);
-			exit(EXIT_FAILURE);
-		}
+			exit(EXIT_FAILURE);	}
 		else
 		{
 			if (wait(&status) == -1)
-				exit(EXIT_FAILURE);
-		}
+				exit(EXIT_FAILURE);	}
 		for (i = 0; i < num_tokens; i++)
 		{
 			free(av[i]);
 		}
-		free(av);
-	}
+		free(av);	}
 	free(lineptr);
-	return (0);
-}
+	return (0);	}
