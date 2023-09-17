@@ -98,7 +98,7 @@ void execute_command(char *argv, char **av, char *envp[])
  */
 int main(int argc, char *argv[], char *envp[])
 {
-	size_t n = 0;
+	/*size_t n = 0;*/
 	ssize_t nchars_read;
 	char *lineptr = NULL, **av = NULL;
 	int num_tokens = 0, i;
@@ -107,20 +107,24 @@ int main(int argc, char *argv[], char *envp[])
 
 	while (1)
 	{
+		/* i just commented out the getline code,*/
+		/* it might be useful for comparing outputs */
 		write(STDOUT_FILENO, "$ ", 2);
-		nchars_read = getline(&lineptr, &n, stdin);
-		if (nchars_read == -1)
-		{
-			write(STDOUT_FILENO, "\n", 1);
-			free(lineptr);
-			exit(EXIT_FAILURE);
-		}
+		/*nchars_read = getline(&lineptr, &n, stdin);*/
+		lineptr = _getline();
+		nchars_read = strlen(lineptr);
+		/*if (nchars_read == -1)*/
+		/*{*/
+		/*	write(STDOUT_FILENO, "\n", 1);*/
+		/*	free(lineptr);*/
+		/*	exit(EXIT_FAILURE);*/
+		/*}*/
 		parseInput(lineptr, &av, &nchars_read, &num_tokens);
 		if (strcmp(av[0], "exit") == 0)
 		{
 			free(av[0]);
 			free(av);
-			free(lineptr);
+			/*free(lineptr);*/
 			return (-1);
 		}
 		else if (num_tokens == 1 && strcmp(av[0], "env") == 0)
