@@ -124,7 +124,6 @@ int main(int argc, char *argv[], char *envp[])
 		{
 			free(av[0]);
 			free(av);
-			/*free(lineptr);*/
 			return (-1);
 		}
 		else if (num_tokens == 1 && strcmp(av[0], "env") == 0)
