@@ -16,5 +16,6 @@ int append_path(char **av);
 void print_environment(char *envp[]);
 char *_getline();
 char *_strtok(char *str, const char *delim);
+int isdelim(char stringc, const char *delim);
 
 #endif
