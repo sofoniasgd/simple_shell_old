@@ -1,6 +1,4 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
+#include <shell.h>
 /**
  * _strtok - custom implementation of the strtok() function
  * @str: string to be parsed
