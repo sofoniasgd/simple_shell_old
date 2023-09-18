@@ -15,5 +15,6 @@ void execute_command(char *argv, char **av, char *envp[]);
 int append_path(char **av);
 void print_environment(char *envp[]);
 char *_getline();
+char *_strtok(char *str, const char *delim);
 
 #endif
