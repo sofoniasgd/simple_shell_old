@@ -20,11 +20,11 @@ void parseInput(char *lineptr, char ***av, ssize_t *nchars, int *num_tokens)
 		exit(EXIT_FAILURE);
 	}
 	strcpy(lineptr_copy, lineptr);
-	token = strtok(lineptr, delim);
+	token = _strtok(lineptr, delim);
 	while (token != NULL)
 	{
 		(*num_tokens)++;
-		token = strtok(NULL, delim);
+		token = _strtok(NULL, delim);
 	}
 	(*num_tokens)++;
 	*av = malloc(sizeof(char *) * (*num_tokens));
