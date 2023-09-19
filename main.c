@@ -113,7 +113,7 @@ int main(int argc, char *argv[], char *envp[])
 		{
 			if (av[1])
 			{
-				status_code = atoi(av[1]);
+				status_code = _atoi(av[1]);
 				free(av[0]);
 				free(av[1]);
 				free(av);

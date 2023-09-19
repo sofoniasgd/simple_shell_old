@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * atoi - Convert a string to an integer.
+ * _atoi - Convert a string to an integer.
  * @str: The string to be converted.
  * Return: The converted integer value.
  */
@@ -8,7 +8,7 @@ int _atoi(const char *str)
 {
 	int result = 0, sign = 1;
 
-    while (*str == ' ' || *str == '\t')
+	while (*str == ' ' || *str == '\t')
 	{
 		str++;
 	}
