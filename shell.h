@@ -25,4 +25,6 @@ char *_strdup(const char *str);
 char *_strchr(const char *str, int c);
 int _atoi(const char *str);
 void _exitstatus(char **av);
+void remove_comment(char **av, int num_tokens);
+
 #endif
