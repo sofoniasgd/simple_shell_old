@@ -7,11 +7,11 @@
  */
 char *_getline()
 {
-	int i;
+	int i = 0;
 	ssize_t len;
 	/* use static buffer with max size 1024 and flsuh it */
 	static char buff[1024];
-	i = 0;
+
 	while (i < 1024)
 	{
 		buff[i] = 0;
