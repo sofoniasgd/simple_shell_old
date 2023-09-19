@@ -19,7 +19,7 @@ void parseInput(char *lineptr, char ***av, ssize_t *nchars, int *num_tokens)
 		perror("malloc");
 		exit(EXIT_FAILURE);
 	}
-	strcpy(lineptr_copy, lineptr);
+	_strcpy(lineptr_copy, lineptr);
 	token = _strtok(lineptr, delim);
 	while (token != NULL)
 	{
@@ -33,7 +33,7 @@ void parseInput(char *lineptr, char ***av, ssize_t *nchars, int *num_tokens)
 		perror("malloc");
 		exit(EXIT_FAILURE);
 	}
-	token = strtok(lineptr_copy, delim);
+	token = _strtok(lineptr_copy, delim);
 	for (i = 0; token != NULL; i++)
 	{
 		(*av)[i] = malloc(sizeof(char) * (strlen(token) + 1));
@@ -42,8 +42,8 @@ void parseInput(char *lineptr, char ***av, ssize_t *nchars, int *num_tokens)
 			perror("malloc");
 			exit(EXIT_FAILURE);
 		}
-		strcpy((*av)[i], token);
-		token = strtok(NULL, delim);
+		_strcpy((*av)[i], token);
+		token = _strtok(NULL, delim);
 	}
 	(*av)[i] = NULL;
 	free(lineptr_copy);
