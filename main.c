@@ -98,33 +98,33 @@ void execute_command(char *argv, char **av, char *envp[])
  */
 int main(int argc, char *argv[], char *envp[])
 {
-	/*size_t n = 0;*/
 	ssize_t nchars_read;
 	char *lineptr = NULL, **av = NULL;
-	int num_tokens = 0, i;
+	int num_tokens = 0, i, status_code;
 
 	(void)argc;
-
 	while (1)
 	{
-		/* i just commented out the getline code,*/
-		/* it might be useful for comparing outputs */
 		write(STDOUT_FILENO, "$ ", 2);
-		/*nchars_read = getline(&lineptr, &n, stdin);*/
 		lineptr = _getline();
 		nchars_read = _strlen(lineptr);
-		/*if (nchars_read == -1)*/
-		/*{*/
-		/*	write(STDOUT_FILENO, "\n", 1);*/
-		/*	free(lineptr);*/
-		/*	exit(EXIT_FAILURE);*/
-		/*}*/
 		parseInput(lineptr, &av, &nchars_read, &num_tokens);
 		if (_strcmp(av[0], "exit") == 0)
 		{
-			free(av[0]);
-			free(av);
-			return (-1);
+			if (av[1])
+			{
+				status_code = atoi(av[1]);
+				free(av[0]);
+				free(av[1]);
+				free(av);
+				exit(status_code);
+			}
+			else
+			{
+				free(av[0]);
+				free(av);
+				exit(0);
+			}
 		}
 		else if (num_tokens == 1 && _strcmp(av[0], "env") == 0)
 			print_environment(envp);
