@@ -18,4 +18,9 @@ char *_getline();
 char *_strtok(char *str, const char *delim);
 int isdelim(char stringc, const char *delim);
 char* _strcpy(char* destination, const char* source);
+int _strcmp(const char* str1, const char* str2);
+size_t _strlen(const char *str);
+char *_strcat(char *dest, const char *src);
+char *_strdup(const char *str);
+char *_strchr(const char *str, int c);
 #endif

@@ -12,32 +12,32 @@ int append_path(char **av)
 	if (strchr(command, '/') == NULL)
 	{
 		/* get PATH value, extract directories(strtok) */
-		path_copy = strdup(path);
-		token = strtok(path_copy, ":");
+		path_copy = _strdup(path);
+		token = _strtok(path_copy, ":");
 		while (token != NULL)
 		{
 			/* for each directory, generate full path */
 			/* and check if it exists (and can be accessed) */
-			full_path = malloc(strlen(token) + strlen(command) + 2);
+			full_path = malloc(_strlen(token) + _strlen(command) + 2);
 			if (full_path != NULL)
 			{
-				strcpy(full_path, token);
-				strcat(full_path, "/");
-				strcat(full_path, command);
+				_strcpy(full_path, token);
+				_strcat(full_path, "/");
+				_strcat(full_path, command);
 				if (access(full_path, X_OK) == 0)
 				{
 					/* file can be accessed, save full path to av[0]*/
 					/* free av[0], reallocate to size of full_path and copy */
 					free(av[0]);
-					av[0] = malloc(sizeof(char) * strlen(full_path));
-					strcpy(av[0], full_path);
+					av[0] = malloc(sizeof(char) * _strlen(full_path));
+					_strcpy(av[0], full_path);
 					free(full_path);
 					free(path_copy);
 					return (0);
 				}
 				free(full_path);
 			}
-			token = strtok(NULL, ":");
+			token = _strtok(NULL, ":");
 		}
 		free(path_copy);
 	}
@@ -112,7 +112,7 @@ int main(int argc, char *argv[], char *envp[])
 		write(STDOUT_FILENO, "$ ", 2);
 		/*nchars_read = getline(&lineptr, &n, stdin);*/
 		lineptr = _getline();
-		nchars_read = strlen(lineptr);
+		nchars_read = _strlen(lineptr);
 		/*if (nchars_read == -1)*/
 		/*{*/
 		/*	write(STDOUT_FILENO, "\n", 1);*/
@@ -120,13 +120,13 @@ int main(int argc, char *argv[], char *envp[])
 		/*	exit(EXIT_FAILURE);*/
 		/*}*/
 		parseInput(lineptr, &av, &nchars_read, &num_tokens);
-		if (strcmp(av[0], "exit") == 0)
+		if (_strcmp(av[0], "exit") == 0)
 		{
 			free(av[0]);
 			free(av);
 			return (-1);
 		}
-		else if (num_tokens == 1 && strcmp(av[0], "env") == 0)
+		else if (num_tokens == 1 && _strcmp(av[0], "env") == 0)
 			print_environment(envp);
 		execute_command(argv[0], av, envp);
 		for (i = 0; i < num_tokens; i++)
