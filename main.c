@@ -109,6 +109,7 @@ int main(int argc, char *argv[], char *envp[])
 		lineptr = _getline();
 		nchars_read = _strlen(lineptr);
 		parseInput(lineptr, &av, &nchars_read, &num_tokens);
+		/*remove_comment(av, &num_tokens);*/
 		if (_strcmp(av[0], "exit") == 0)
 		{
 			_exitstatus(av);
