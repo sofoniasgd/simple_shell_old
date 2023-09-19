@@ -24,4 +24,5 @@ char *_strcat(char *dest, const char *src);
 char *_strdup(const char *str);
 char *_strchr(const char *str, int c);
 int _atoi(const char *str);
+void _exitstatus(char **av);
 #endif

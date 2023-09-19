@@ -100,7 +100,7 @@ int main(int argc, char *argv[], char *envp[])
 {
 	ssize_t nchars_read;
 	char *lineptr = NULL, **av = NULL;
-	int num_tokens = 0, i, status_code;
+	int num_tokens = 0, i;
 
 	(void)argc;
 	while (1)
@@ -111,20 +111,7 @@ int main(int argc, char *argv[], char *envp[])
 		parseInput(lineptr, &av, &nchars_read, &num_tokens);
 		if (_strcmp(av[0], "exit") == 0)
 		{
-			if (av[1])
-			{
-				status_code = _atoi(av[1]);
-				free(av[0]);
-				free(av[1]);
-				free(av);
-				exit(status_code);
-			}
-			else
-			{
-				free(av[0]);
-				free(av);
-				exit(0);
-			}
+			_exitstatus(av);
 		}
 		else if (num_tokens == 1 && _strcmp(av[0], "env") == 0)
 			print_environment(envp);
