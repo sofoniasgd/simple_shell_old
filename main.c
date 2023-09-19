@@ -9,7 +9,7 @@ int append_path(char **av)
 	char *command = NULL, *path = getenv("PATH"), *token, *path_copy, *full_path;
 	/* check if command already has full path or not */
 	command = av[0];
-	if (strchr(command, '/') == NULL)
+	if (_strchr(command, '/') == NULL)
 	{
 		/* get PATH value, extract directories(strtok) */
 		path_copy = _strdup(path);
