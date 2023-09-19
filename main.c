@@ -105,7 +105,10 @@ int main(int argc, char *argv[], char *envp[])
 	(void)argc;
 	while (1)
 	{
-		write(STDOUT_FILENO, "$ ", 2);
+		if (!*argv[0])
+		{
+			write(STDOUT_FILENO, "$ ", 2);
+		}
 		lineptr = _getline();
 		nchars_read = _strlen(lineptr);
 		parseInput(lineptr, &av, &nchars_read, &num_tokens);
