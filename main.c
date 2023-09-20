@@ -106,41 +106,33 @@ void execute_command(char *argv, char **av, char *envp[])
 int main(int argc, char *argv[], char *envp[])
 {
 	ssize_t nchars_read;
-	char *lineptr = NULL, **av = NULL, *token, *command;
+	char *lineptr = NULL, **av = NULL;
 	int num_tokens = 0, i;
 
 	(void)argc;
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, "$ ", 2);
-		lineptr = _getline();
-		if (lineptr == NULL)
-			break;
-		token = _strtok(lineptr, "\n");
-		while (token != NULL)
 		{
-			command = _strtok(token, " \t");
-			if (command != NULL)
-			{
-				nchars_read = _strlen(command);
-				parseInput(command, &av, &nchars_read, &num_tokens);
-				/*remove_comment(av, &num_tokens);*/
-				if (_strcmp(av[0], "exit") == 0)
-					_exitstatus(av);
-				else if (_strcmp(av[0], "env") == 0)
-					print_environment(envp);
-				else
-					execute_command(argv[0], av, envp);
-				for (i = 0; i < num_tokens; i++)
-				{
-					free(av[i]);
-				}
-				free(av);
-			}
-			token = _strtok(NULL, "\n");
+			write(STDOUT_FILENO, "$ ", 2);
 		}
-		free(lineptr);
+		lineptr = _getline();
+		nchars_read = _strlen(lineptr);
+		parseInput(lineptr, &av, &nchars_read, &num_tokens);
+		/*remove_comment(av, &num_tokens);*/
+		if (_strcmp(av[0], "exit") == 0)
+		{
+			_exitstatus(av);
+		}
+		else if (num_tokens == 1 && _strcmp(av[0], "env") == 0)
+			print_environment(envp);
+		execute_command(argv[0], av, envp);
+		for (i = 0; i < num_tokens; i++)
+		{
+			free(av[i]);
+		}
+		free(av);
 	}
+	free(lineptr);
 	return (0);
 }
