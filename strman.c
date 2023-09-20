@@ -16,7 +16,7 @@ char *_strcpy(char *destination, const char *source)
 		source++;
 	}
 	*destination = '\0';
-	return (destination);
+	return (start);
 }
 /**
  * _strcmp - Compare two strings lexicographically.
