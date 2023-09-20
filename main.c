@@ -56,9 +56,11 @@ return (0);
  */
 void execute_command(char *argv, char **av, char *envp[])
 {
-	/* argv ??? */
+	char errmessage[256];
 	pid_t pid;
 	int status;
+
+	errmessage[0] = '\0';
 	/* check if av exists or command exists(parseint worked)*/
 	if (!av || !av[0])
 	{
@@ -76,7 +78,11 @@ void execute_command(char *argv, char **av, char *envp[])
 	else if (pid == 0)
 	{
 		execmd(av, envp);
-		perror(argv);
+		strcat(errmessage, argv);
+		strcat(errmessage, ": 1: ");
+		strcat(errmessage, av[0]);
+		strcat(errmessage, ": not found\n");
+		write(STDERR_FILENO, errmessage, strlen(errmessage));
 		exit(EXIT_FAILURE);
 	}
 	else
