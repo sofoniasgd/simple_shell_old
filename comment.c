@@ -38,8 +38,8 @@ int finder(char **av, int *i, int *j)
 void remove_comment(char **av, int *num_tokens)
 {
 	int i = -1, j = -1;
+
 	finder(av, &i, &j);
-	/* didnt find '#'=> command doesnt contain comments.return */
 	if (i == -1 && j == -1)
 	{
 		printf("no comment!!\n");
@@ -53,8 +53,6 @@ void remove_comment(char **av, int *num_tokens)
 		av[i] = NULL;
 		i++;
 	}
-	/*if '#' is in its own token(eg foo # bar). free token */
-	/*if '#' mixed with other chars, remove chars after it(eg, foo ba#r)*/
 	else
 	{
 		*(av[i] + j) = '\0';
@@ -70,12 +68,10 @@ void remove_comment(char **av, int *num_tokens)
 		*num_tokens = 0;
 	else
 		*num_tokens = i;
-	/* free any subsequent tokens and null terminate array, then exit */
 	while (av[i] != NULL)
 	{
 		free(av[i]);
 		i++;
 	}
 	av[i] = NULL;
-	return;
 }

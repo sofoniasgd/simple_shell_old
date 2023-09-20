@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * _exit - Exit the shell with a specified status code.
+ * _exitstatus- Exit the shell with a specified status code.
  * @av: An array of strings containing the "exit" command
  *		and its argument (if any).
  */
