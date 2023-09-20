@@ -55,7 +55,6 @@ char *_strtok(char *str, const char *delim)
 			break;
 		i++;
 	}
-	/*printf("len: %d  i: %i\n", len, i);*/
 	/* change delimiter location to null byte '\0'*/
 	*(strc + i) = '\0';
 	/* store starting location to ret */

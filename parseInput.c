@@ -13,7 +13,7 @@ void parseInput(char *lineptr, char ***av, ssize_t *nchars, int *num_tokens)
 	int i;
 	/* copy command input into new location(lineptr_copy)*/
 	*num_tokens = 0;
-	lineptr_copy = malloc(sizeof(char) * (*nchars));
+	lineptr_copy = malloc(sizeof(char) * (*nchars) + 1);
 	if (lineptr_copy == NULL)
 	{
 		perror("malloc");

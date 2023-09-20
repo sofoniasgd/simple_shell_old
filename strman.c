@@ -7,7 +7,6 @@
  */
 char *_strcpy(char *destination, const char *source)
 {
-	char *dest = destination;
 
 	while (*source != '\0')
 	{
@@ -16,7 +15,7 @@ char *_strcpy(char *destination, const char *source)
 		source++;
 	}
 	*destination = '\0';
-	return (dest);
+	return (destination);
 }
 /**
  * _strcmp - Compare two strings lexicographically.
