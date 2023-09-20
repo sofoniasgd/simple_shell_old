@@ -7,6 +7,7 @@
  */
 char *_strcpy(char *destination, const char *source)
 {
+	char *start = destination;
 
 	while (*source != '\0')
 	{
