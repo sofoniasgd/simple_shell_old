@@ -105,7 +105,7 @@ int main(int argc, char *argv[], char *envp[])
 	(void)argc;
 	while (1)
 	{
-		if (!*argv[0])
+		if (isatty(STDIN_FILENO))
 		{
 			write(STDOUT_FILENO, "$ ", 2);
 		}
