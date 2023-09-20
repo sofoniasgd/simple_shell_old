@@ -31,7 +31,7 @@ char *_getline()
 		/* EOF with notext exit program */
 		if (buff[0] == '\0')
 		{
-			if(isatty(STDIN_FILENO))
+			if (isatty(STDIN_FILENO))
 				write(STDOUT_FILENO, "\n", 1);
 			exit(EXIT_SUCCESS);
 		}
