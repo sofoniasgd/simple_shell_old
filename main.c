@@ -107,7 +107,7 @@ int main(int argc, char *argv[], char *envp[])
 {
 	ssize_t nchars_read;
 	char *lineptr = NULL, **av = NULL;
-	int num_tokens = 0, i;
+	int num_tokens = 0, i = 0;
 
 	(void)argc;
 	while (1)
@@ -117,6 +117,8 @@ int main(int argc, char *argv[], char *envp[])
 			write(STDOUT_FILENO, "$ ", 2);
 		}
 		lineptr = _getline();
+		if (lineptr == NULL)
+			exit(EXIT_SUCCESS);
 		nchars_read = _strlen(lineptr);
 		parseInput(lineptr, &av, &nchars_read, &num_tokens);
 		/*remove_comment(av, &num_tokens);*/

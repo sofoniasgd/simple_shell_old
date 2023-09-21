@@ -1,5 +1,37 @@
 #include "shell.h"
+/**
+ * flushbuffer - flushes buffer
+ * @buff: pointer to buffer
+ * Return: none
+ */
+void flushbuffer(char *buff)
+{
+int i = 0;
+while (i < 1024)
+{
+	*(buff + i) = 0;
+	i++;
+}
+}
+/**
+ * pipe_getline - getline implementation in non-iteactive mode
+ * @buff: pointer to buffer
+ * Return: none
+ */
+char *pipe_getline(char *buff)
+{
+	int readstatus = 0;
 
+	readstatus = read(STDIN_FILENO, buff, sizeof(buff));
+	if (readstatus == -1)
+	{
+		perror("read");
+		exit(EXIT_FAILURE);
+	}
+	if (readstatus == 0)
+		exit(EXIT_SUCCESS);
+	return (buff);
+}
 /**
  * _getline - custom getline() implementation
  * uses read() function
@@ -7,15 +39,14 @@
  */
 char *_getline()
 {
-	int i = 0;
 	ssize_t len;
 	/* use static buffer with max size 1024 and flsuh it */
 	static char buff[1024];
 
-	while (i < 1024)
+	flushbuffer(buff);
+	if (!isatty(STDIN_FILENO))
 	{
-		buff[i] = 0;
-		i++;
+		return (pipe_getline(buff));
 	}
 	/* call read and handle errors */
 	len = read(STDIN_FILENO, buff, sizeof(buff));
