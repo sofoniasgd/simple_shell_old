@@ -1,5 +1,27 @@
 #include "shell.h"
 /**
+ * remdelimiter - removes delimiter bytes to the front of a string
+ * @strc: buffer pointer
+ * @delim: delimiter string pointer
+ * Return: none
+ */
+void remdelimiter(char *strc, const char *delim)
+{
+	int i = 0, j = 0;
+
+	if (isdelim(*(strc + i), delim) == 0)
+		return;
+	while (*(strc + i) != '\0')
+	{
+		if (isdelim(*(strc + i), delim) == 1)
+			j++;
+		else
+			break;
+		i++;
+	}
+strc = strc + j;
+}
+/**
  * isdelim - checks delimiter bytes with string character
  * @stringc: character to compare
  * @delim: pointer to delimiter string
@@ -14,7 +36,7 @@ int isdelim(char stringc, const char *delim)
 	while (*(delim + i) != '\0')
 	{
 		/* return 1 if match found or end of string */
-		if (stringc == *(delim + i) || stringc == '\0')
+		if (stringc == *(delim + i))
 		{
 			return (1);
 		}
@@ -30,7 +52,7 @@ int isdelim(char stringc, const char *delim)
  */
 char *_strtok(char *str, const char *delim)
 {
-	int i, len;
+	int i = 0, len = 0;
 	char *ret;
 	/* create a static pointer to store starting location of the function*/
 	static char *strc;
@@ -47,9 +69,9 @@ char *_strtok(char *str, const char *delim)
 	if (strc == NULL)
 		return (NULL);
 	/*get strc length, find delimiter (handle dulpicate delimiters)*/
+	/*remdelimiter(strc, delim);*/
 	len = strlen(strc);
-	i = 0;
-	while (i < len)
+	while (i <= len)
 	{
 		if (isdelim(*(strc + i), delim) == 1)
 			break;

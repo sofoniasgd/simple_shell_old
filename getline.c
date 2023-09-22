@@ -15,22 +15,40 @@ while (i < 1024)
 }
 /**
  * pipe_getline - getline implementation in non-iteactive mode
- * @buff: pointer to buffer
  * Return: none
  */
-char *pipe_getline(char *buff)
+char *pipe_getline()
 {
-	int readstatus = 0;
+	static char buffer[1024];
+	size_t start = 0, length;
+	int i = 0, sub = 0;
+	char *ret;
 
-	readstatus = read(STDIN_FILENO, buff, sizeof(buff));
-	if (readstatus == -1)
+	flushbuffer(buffer);
+	ret = fgets(buffer, sizeof(buffer), stdin);
+	if (ret == NULL)
 	{
-		perror("read");
-		exit(EXIT_FAILURE);
+		return (NULL);
 	}
-	if (readstatus == 0)
-		exit(EXIT_SUCCESS);
-	return (buff);
+	while ((buffer + start) && buffer[start] == ' ')
+		start++;
+	if (!(buffer + start + 1) || start == 1023)
+	{
+		return (NULL);
+	}
+	length = _strlen(buffer + start);
+	length--;
+	for (i = (int)length; i >= 0; i--)
+	{
+		if (buffer[start + i] == 0 || buffer[start + i] == 32)
+			sub++;
+	}
+	if (sub != 0)
+	{
+		buffer[start + (length - sub)] = '\n';
+		buffer[start + (length - sub) + 1] = '\0';
+	}
+	return (buffer + start);
 }
 /**
  * _getline - custom getline() implementation
@@ -43,10 +61,9 @@ char *_getline()
 	/* use static buffer with max size 1024 and flsuh it */
 	static char buff[1024];
 
-	flushbuffer(buff);
 	if (!isatty(STDIN_FILENO))
 	{
-		return (pipe_getline(buff));
+		return (pipe_getline());
 	}
 	/* call read and handle errors */
 	len = read(STDIN_FILENO, buff, sizeof(buff));
