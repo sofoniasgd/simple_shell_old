@@ -58,7 +58,7 @@ void execute_command(char *argv, char **av, char *envp[])
 {
 	char errmessage[256];
 	pid_t pid;
-	int status;
+	int status, exitstat;
 
 	errmessage[0] = '\0';
 	/* check if av exists or command exists(parseint worked)*/
@@ -91,7 +91,12 @@ void execute_command(char *argv, char **av, char *envp[])
 		if (wait(&status) == -1)
 		{
 			perror("wait");
-			exit(2);
+			exit(EXIT_FAILURE);
+		}
+		if(WIFEXITED(status))
+		{
+			exitstat = WEXITSTATUS(status);
+			exit(exitstat);
 		}
 	}
 }
@@ -125,7 +130,7 @@ int main(int argc, char *argv[], char *envp[])
 		/*remove_comment(av, &num_tokens);*/
 		if (_strcmp(av[0], "exit") == 0)
 		{
-			_exitstatus(av);
+			_exitstatus(argv, av);
 		}
 		else if (num_tokens == 1 && _strcmp(av[0], "env") == 0)
 			print_environment(envp);
