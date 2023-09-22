@@ -27,37 +27,39 @@ char *pipe_getline()
 	flushbuffer(buffer);
 	ret = fgets(buffer, sizeof(buffer), stdin);
 	if (ret == NULL)
-	{
 		return (NULL);
-	}
-	while (buffer[len] != '\0')
+
+	len = strlen(buffer);
+	while (len > 0 && buffer[len - 1] == '\n')
 	{
-		if (buffer[len] == '\n')
-			buffer[len] = '\0';
-		len++;
+		buffer[len - 1] = '\0';
+		len--;
 	}
-	while ((buffer + start) && buffer[start] == ' ')
+	while (buffer[start] != '\0' && buffer[start] == ' ')
+	{
 		start++;
-	if (!(buffer + start) || start == 1023)
+	}
+	if (start == 1023)
 	{
 		return (NULL);
 	}
-	/* get length of command */
 	length = _strlen(buffer + start);
+
 	if (length == 0)
 		return (NULL);
+
 	i = length;
-	while (i > 0 && *(buffer + start + i - 1) == ' ')
+	while (i > 0 && buffer[start + i - 1] == ' ')
 	{
 		sub++;
 		i--;
 	}
-
 	buffer[start + (length - sub)] = '\n';
 	buffer[start + (length - sub) + 1] = '\0';
 
 	return (buffer + start);
 }
+
 /**
  * _getline - custom getline() implementation
  * uses read() function
