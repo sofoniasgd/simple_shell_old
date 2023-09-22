@@ -47,7 +47,7 @@ char *pipe_getline()
 	if (length == 0)
 		return (NULL);
 	i = length;
-	while ( i > 0 && *(buffer + start + i - 1) == ' ')
+	while (i > 0 && *(buffer + start + i - 1) == ' ')
 	{
 		sub++;
 		i--;
