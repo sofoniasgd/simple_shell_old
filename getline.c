@@ -34,13 +34,11 @@ char *pipe_getline()
 		start++;
 	if (!(buffer + start) || start == 1023)
 	{
-		printf("empty spaces\n");
 		return (NULL);
 	}
 	length = _strlen(buffer + start);
 	if ((start == length) || length == 1)
 		return (NULL);
-	printf("start=%ld|buffer=%s|length=%ld\n", start, buffer, length);
 	length--;
 	for (i = (int)length; i >= 0; i--)
 	{
