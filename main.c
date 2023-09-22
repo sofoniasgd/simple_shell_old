@@ -64,7 +64,7 @@ void execute_command(char *argv, char **av, char *envp[])
 	/* check if av exists or command exists(parseint worked)*/
 	if (!av || !av[0])
 	{
-		exit(EXIT_FAILURE);
+		exit(2);
 	}
 	/* handle path before fork==> call append path */
 	append_path(av);
@@ -84,14 +84,14 @@ void execute_command(char *argv, char **av, char *envp[])
 		strcat(errmessage, av[0]);
 		strcat(errmessage, ": not found\n");
 		write(STDERR_FILENO, errmessage, strlen(errmessage));
-		exit(EXIT_FAILURE);
+		exit(2);
 	}
 	else
 	{
 		if (wait(&status) == -1)
 		{
 			perror("wait");
-			exit(EXIT_FAILURE);
+			exit(2);
 		}
 	}
 }

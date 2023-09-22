@@ -14,6 +14,6 @@ void execmd(char **av, char **envp)
 		execve(command, av, envp);
 	}
 	else
-		exit(EXIT_FAILURE);
+		exit(EXIT_SUCCESS);
 }
 
