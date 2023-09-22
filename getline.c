@@ -20,8 +20,8 @@ while (i < 1024)
 char *pipe_getline()
 {
 	static char buffer[1024];
-	size_t start = 0, length;
-	int i = 0, sub = 0;
+	size_t start = 0, length = 0;
+	int i = 0, sub = 0, len = 0;
 	char *ret;
 
 	flushbuffer(buffer);
@@ -30,26 +30,32 @@ char *pipe_getline()
 	{
 		return (NULL);
 	}
+	while (buffer[len] != '\0')
+	{
+		if (buffer[len] == '\n')
+			buffer[len] = '\0';
+		len++;
+	}
 	while ((buffer + start) && buffer[start] == ' ')
 		start++;
 	if (!(buffer + start) || start == 1023)
 	{
 		return (NULL);
 	}
+	/* get length of command */
 	length = _strlen(buffer + start);
-	if ((start == length) || length == 1)
+	if (length == 0)
 		return (NULL);
-	length--;
-	for (i = (int)length; i >= 0; i--)
+	i = length;
+	while ( i > 0 && *(buffer + start + i - 1) == ' ')
 	{
-		if (buffer[start + i] == 0 || buffer[start + i] == 32)
-			sub++;
+		sub++;
+		i--;
 	}
-	if (sub != 0)
-	{
-		buffer[start + (length - sub)] = '\n';
-		buffer[start + (length - sub) + 1] = '\0';
-	}
+
+	buffer[start + (length - sub)] = '\n';
+	buffer[start + (length - sub) + 1] = '\0';
+
 	return (buffer + start);
 }
 /**

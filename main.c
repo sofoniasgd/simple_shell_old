@@ -68,6 +68,7 @@ void execute_command(char *argv, char **av, char *envp[])
 	}
 	/* handle path before fork==> call append path */
 	append_path(av);
+	/*append_localpath(av);*/
 	pid = fork();
 
 	if (pid == -1)
