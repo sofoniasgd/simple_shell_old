@@ -32,7 +32,7 @@ char *pipe_getline()
 	}
 	while ((buffer + start) && buffer[start] == ' ')
 		start++;
-	if (!(buffer + start + 1) || start == 1023)
+	if (!(buffer + start) || start == 1023)
 	{
 		return (NULL);
 	}
