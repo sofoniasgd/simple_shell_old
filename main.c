@@ -63,14 +63,10 @@ void execute_command(char *argv, char **av, char *envp[])
 	errmessage[0] = '\0';
 	/* check if av exists or command exists(parseint worked)*/
 	if (!av || !av[0])
-	{
 		exit(2);
-	}
 	/* handle path before fork==> call append path */
 	append_path(av);
-	/*append_localpath(av);*/
 	pid = fork();
-
 	if (pid == -1)
 	{
 		perror("fork");
@@ -84,7 +80,7 @@ void execute_command(char *argv, char **av, char *envp[])
 		strcat(errmessage, av[0]);
 		strcat(errmessage, ": not found\n");
 		write(STDERR_FILENO, errmessage, strlen(errmessage));
-		exit(2);
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
@@ -93,10 +89,11 @@ void execute_command(char *argv, char **av, char *envp[])
 			perror("wait");
 			exit(EXIT_FAILURE);
 		}
-		if(WIFEXITED(status))
+		if (WIFEXITED(status))
 		{
 			exitstat = WEXITSTATUS(status);
-			exit(exitstat);
+			if (exitstat != 0)
+				exit(exitstat);
 		}
 	}
 }
@@ -125,6 +122,8 @@ int main(int argc, char *argv[], char *envp[])
 		lineptr = _getline();
 		if (lineptr == NULL)
 			exit(EXIT_SUCCESS);
+		else if (strcmp(lineptr, "*") == 0)
+			continue;
 		nchars_read = _strlen(lineptr);
 		parseInput(lineptr, &av, &nchars_read, &num_tokens);
 		/*remove_comment(av, &num_tokens);*/

@@ -10,6 +10,7 @@ void _exitstatus(char **argv, char **av)
 {
 	char errmessage[256];
 	int status_code;
+
 	errmessage[0] = '\0';
 	if (av[1])
 	{
@@ -26,7 +27,7 @@ void _exitstatus(char **argv, char **av)
 			write(STDERR_FILENO, errmessage, strlen(errmessage));
 			status_code = 2;
 		}
-		if(status_code > 255)
+		if (status_code > 255)
 			status_code = status_code % 256;
 		/* free memory and exit with code */
 		free(av[0]);
